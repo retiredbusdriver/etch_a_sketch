@@ -1,0 +1,14 @@
+#grid-container {
+  display: grid;
+  width: 1000px;
+  height: 1000px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.gridNum {
+ width: 20px;
+ height: 20px;
+ background-color: blue;
+ border: 5px black solid;
+}
