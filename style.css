@@ -1,14 +1,24 @@
+body {
+  background-color: #e1e1ec;
+}
+
 #grid-container {
+  margin: 0 auto;
   display: grid;
-  width: 1000px;
-  height: 1000px;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  width: 800px;
+  height: 800px;
+  border: black 3px solid;
+}
+
+#rgb-button {
+  margin: 0 auto;
 }
 
 .gridNum {
- width: 20px;
- height: 20px;
- background-color: blue;
- border: 5px black solid;
+ border: 1px solid black;
+}
+
+.testNum {
+  border: 1px solid #b7c1c1;
+  background-color: black;
 }
