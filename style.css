@@ -29,11 +29,10 @@ body {
 }
 
 
-.gridNum {
+.gridNum, .rgbNum {
  border: 1px solid black;
 }
 
-.testNum {
-  border: 1px solid #b7c1c1;
+.gridNumFull {
   background-color: black;
 }

@@ -1,4 +1,3 @@
-console.log('test')
 let createButton = document.getElementById('create-button');
 let rgbButton = document.getElementById('rgb-button');
 let gridContainer = document.getElementById('grid-container')
@@ -51,9 +50,23 @@ function createGrid () {
     gridContainer.appendChild(blockDiv);
   }
 
-  gridContainer.addEventListener('hover', function() {
-    return this.classLis
-  })
+  /*child_nodes = gridContainer.childNodes.length;
+  for (let i = 0; i < child_nodes; i++) {
+    gridStyleCheck = document.getElementsByClassName(`gridNum${i+1}`);
+    gridStyleCheck[0].style.opacity = '100';
+  };
+
+  function logText (e) {
+    let currentGridNum = this.classList[1];
+    console.log(currentGridNum);
+  }*/
+
+  const divs = document.querySelectorAll('div')
+  function changeColor (e) {
+    this.classList.toggle('gridNumFull');
+  }
+  divs.forEach(div => div.addEventListener('mouseover', changeColor));
+
 }
 
 
@@ -79,21 +92,22 @@ function createRGBGrid () {
   let expoUserInput = userInput * userInput;
   for (let i = 0; i < expoUserInput; i++) {
     let blockDiv = document.createElement('div');
-    blockDiv.classList.add(`gridNum`);
-    blockDiv.classList.add(`gridNum${i+1}`);
+    blockDiv.classList.add(`rgbNum${i+1}`);
+    blockDiv.classList.add(`rgbNum`);
     gridContainer.appendChild(blockDiv);
   }
 
   child_nodes = gridContainer.childNodes.length;
   for (let i = 0; i < child_nodes; i++) {
-    gridStyleCheck = document.getElementsByClassName(`gridNum${i+1}`);
-    gridStyleCheck[0].style.backgroundColor = newRGB();
+    rgbStyleCheck = document.getElementsByClassName(`rgbNum${i+1}`);
+  //  rgbStyleCheck[0].style.backgroundColor = newRGB();
   }
 
+
+  const gridNums = document.querySelectorAll('div')
+  function changeColor (e) {
+    this.style.backgroundColor = `${newRGB()}`
+  }
+  gridNums.forEach(div => div.addEventListener('mouseover', changeColor, {capture: false}));
+
 }
-
-
-
-//gridContainer.addEventListener('mouseover', function() {
-//  console.log(this)
-//})
