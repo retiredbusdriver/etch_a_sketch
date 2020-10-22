@@ -10,9 +10,24 @@ body {
   border: black 3px solid;
 }
 
-#rgb-button {
-  margin: 0 auto;
+#create-button, #rgb-button {
+  height: 50px;
+  width: 200px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  background-color: darkslateblue;
+  text-decoration: none;
+  font-size: 20px;
+  display: block;
+  margin: 1px auto;
 }
+
+#create-button:hover, #rgb-button:hover {
+  font-size: 21px;
+  border: 1px white solid;
+}
+
 
 .gridNum {
  border: 1px solid black;
