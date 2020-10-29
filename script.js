@@ -1,18 +1,28 @@
-let createButton = document.getElementById('create-button');
+let bwButton = document.getElementById('create-button');
 let rgbButton = document.getElementById('rgb-button');
 let gridContainer = document.getElementById('grid-container')
-let userInput = ''
 let child_nodes = 0;
 let gridStyleCheck;
 let gridTemplateRows = "";
 let gridTemplateColumns = "";
+let userInput = 4;
+    
 
-createButton.addEventListener('click', function () {createGrid()});
+bwButton.addEventListener('click', function () {createBWGrid()});
 rgbButton.addEventListener('click', function () {createRGBGrid()});
+
+
+function chooseGridSize () { 
+  userInput = +prompt('How many rows and columns?');
+  while (userInput > 64) {
+    userInput = +prompt('Can not have more than 64 rows/columns. Enter a new number')
+  }
+}
 
 function randomColor () {
   return Math.floor(Math.random() * 255);
 }
+
 function newRGB () {
   return `rgb(${randomColor()}, ${randomColor()}, ${randomColor()})`
 }
@@ -23,18 +33,15 @@ function removeAllChildNodes () {
   }
 }
 
-function createGrid () {
+function createBWGrid () {
   if (gridContainer.firstChild) {
     removeAllChildNodes();
     gridTemplateRows = '';
     gridTemplateColumns = '';
   }
 
-  userInput = +prompt('How many rows and columns?');
-  while (userInput > 64) {
-    userInput = +prompt('Can not have more than 64 rows/columns. Enter a new number')
-  }
-
+  chooseGridSize();
+  
   for (let i = 0; i < userInput; i++) {
     gridTemplateColumns += "1fr ";
     gridTemplateRows += "1fr ";
@@ -50,22 +57,28 @@ function createGrid () {
     gridContainer.appendChild(blockDiv);
   }
 
-  /*child_nodes = gridContainer.childNodes.length;
+  child_nodes = gridContainer.childNodes.length;
   for (let i = 0; i < child_nodes; i++) {
-    gridStyleCheck = document.getElementsByClassName(`gridNum${i+1}`);
-    gridStyleCheck[0].style.opacity = '100';
-  };
-
-  function logText (e) {
-    let currentGridNum = this.classList[1];
-    console.log(currentGridNum);
-  }*/
+    gridStyleCheck = document.getElementsByClassName(`gridNum${i + 1}`);
+    gridStyleCheck[0].style.backgroundColor = 'rgba(0,0,0,0.0)';
+  }
 
   const divs = document.querySelectorAll('div')
-  function changeColor (e) {
-    this.classList.toggle('gridNumFull');
+  function changeOpacity (e) {
+    let currentOpacity = this.style.backgroundColor.charAt(16);
+    let newOpacity = +currentOpacity + 1;
+    if (newOpacity == 9) {
+      this.style.backgroundColor = 'black'
+    }
+    if (this.stylebackgroundColor == 'rgba(0,0,0,0') {
+      this.style.backgroundColor = 'rgba(0,0,0,0.1)'
+    }
+    if (currentOpacity <= 8) {
+      this.style.backgroundColor = `rgba(0,0,0,0.${newOpacity})`
+      console.log(newOpacity)
+    }
   }
-  divs.forEach(div => div.addEventListener('mouseover', changeColor));
+  divs.forEach(div => div.addEventListener('mouseover', changeOpacity));
 
 }
 
@@ -101,6 +114,7 @@ function createRGBGrid () {
   for (let i = 0; i < child_nodes; i++) {
     rgbStyleCheck = document.getElementsByClassName(`rgbNum${i+1}`);
   //  rgbStyleCheck[0].style.backgroundColor = newRGB();
+  // this will add back generating random RGB for each section on grid creation
   }
 
 
